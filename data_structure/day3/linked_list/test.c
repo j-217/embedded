@@ -4,7 +4,7 @@
  * @Author: ru_jin
  * @Date: 2019-12-11 18:24:55
  * @LastEditors: ru_jin
- * @LastEditTime: 2019-12-12 19:55:18
+ * @LastEditTime: 2019-12-12 20:34:25
  */
 #include "linklist.h"
 
@@ -78,6 +78,8 @@ int main(int argc, char const *argv[])
     insert_in_order(p_seql_2, 2);
     insert_in_order(p_seql_2, 5);
     insert_in_order(p_seql_2, 7);
+    printf("LINK 1: ");
+    get_link(p_seql_2);
 
     linknode *p_seql_3 = create_link();
     insert_in_order(p_seql_3, 1);
@@ -86,6 +88,8 @@ int main(int argc, char const *argv[])
     insert_in_order(p_seql_3, 4);
     insert_in_order(p_seql_3, 8);
     insert_in_order(p_seql_3, 10);
+    printf("LINK 2: ");
+    get_link(p_seql_3);
 
     linknode *p_m_res = merge_link(p_seql_2, p_seql_3);
     get_link(p_m_res);
