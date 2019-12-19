@@ -53,7 +53,9 @@ int print_line(struct dirent * dd, const char *root_path){
     if(strcmp(dd->d_name, ".") == 0 || strcmp(dd->d_name, "..") == 0){
         strcpy(full_file_name, dd->d_name);
     }else{
+        // 构建完整路径
         strcpy(full_file_name, root_path);
+        strcat(full_file_name, "/");
         strcat(full_file_name, dd->d_name);
     }
 
