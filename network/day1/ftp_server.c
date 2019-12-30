@@ -1,3 +1,11 @@
+/*
+ * @Description: FTP Server based on TCP
+ * @version: 1.0.0
+ * @Author: ru_jin
+ * @Date: 2019-12-25 16:44:21
+ * @LastEditors  : ru_jin
+ * @LastEditTime : 2019-12-26 20:10:09
+ */
 #include "my_ftp.h"
 
 int main(int argc, char const *argv[])
