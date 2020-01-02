@@ -1,7 +1,11 @@
+# settings
 .VSCode
 
 # C programming
-.o
-.i
-.s
-.out
+*.o
+*.i
+*.s
+*.out
+
+# file
+*.jpg
