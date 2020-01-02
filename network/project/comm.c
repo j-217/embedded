@@ -4,7 +4,7 @@
  * @Author: ru_j
  * @Date: 2020-01-01 20:15:55
  * @LastEditors  : ru_j
- * @LastEditTime : 2020-01-01 20:54:20
+ * @LastEditTime : 2020-01-02 11:22:41
  */
 #include "comm.h"
 
@@ -22,7 +22,7 @@ int print_tbl_res(serv_data *p_srv_data)
     char n_tm[30];
     
     for(int i = 0; i < p_srv_data->i_row; i++){
-        format_time(p_srv_data->blogs[0].p_time, n_tm, 30);
+        format_time(p_srv_data->blogs[i].p_time, n_tm, 30);
 
         printf("------------------[%02d]----------------------------\n", i+1);
         printf("TITLE: %s\n", p_srv_data->blogs[i].title);

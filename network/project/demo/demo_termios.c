@@ -11,13 +11,14 @@ int main(int argc, char const *argv[])
 
     new_setting.c_lflag&=~ECHO;
     tcsetattr(0,TCSANOW,&new_setting);
-    printf("please enter password: \n"); 
+    printf("please enter password: \n");  
     fgets(pwd,sizeof(pwd),stdin);
 
-    printf("you enter %s\n",pwd);
+    printf("you enter %d\n",pwd);
     //restore the setting
 
     tcsetattr(0,TCSANOW,&init_setting);
+    // printf("\033[2J");                              // clear terminal
     
     return 0;
 }

@@ -4,7 +4,7 @@
  * @Author: ru_j
  * @Date: 2019-12-31 11:27:20
  * @LastEditors  : ru_j
- * @LastEditTime : 2020-01-02 10:18:43
+ * @LastEditTime : 2020-01-02 11:21:24
  */
 #include "my_clt.h"
 
@@ -82,6 +82,7 @@ int main(void)
         switch(opt){
 /*--------------------------------handle login----------------------------------------------------*/
             case 1:
+                system("clear");                                                // clear terminal
                 if(logged_flag){
                     printf("[INFO] Already Logged In\n");
                     continue;
@@ -126,6 +127,7 @@ int main(void)
 
 /*--------------------------------handle logout---------------------------------------------------*/ 
             case 2:
+                system("clear");
                 logged_flag = 0;
                 printf("[INFO] Logout\n");
                 
@@ -134,12 +136,13 @@ int main(void)
 
 /*--------------------------------handle signup---------------------------------------------------*/ 
             case 3:
+                system("clear");
                 if(logged_flag){
                     printf("[INFO] Logout First\n");
                     continue;
                 }
                 bzero(&n_clt_data, clt_data_len);
-                n_clt_data.opt = 3;                                                 // set client data
+                n_clt_data.opt = 3;                                             // set client data
 
 AGAIN_USERNAME:
                 printf("[INFO] New Username: ");
@@ -153,7 +156,7 @@ AGAIN_USERNAME:
                     goto AGAIN_USERNAME;
                 }
 
-                res = tcsetattr(0, TCSANOW, &n_term_setting);                       // set hidden input
+                res = tcsetattr(0, TCSANOW, &n_term_setting);                   // set hidden input
                 if(res == -1){
                     perror("[ERROR] Setting Termios Attr Hidden");
                     return ERROR_S;
@@ -171,26 +174,27 @@ AGAIN_PASSWORD:
                 }
 
                 printf("\n");
-                res = tcsetattr(0, TCSANOW, &bakup_term_setting);                   // reset display input
+                res = tcsetattr(0, TCSANOW, &bakup_term_setting);                // reset display input
                 if(res == -1){
                     perror("[ERROR] Setting Termios Attr Display");
                     return ERROR_S;
                 }
 
-                clt_send_recv(skt_clt, &n_clt_data, &n_srv_data);                   // send and receive
+                clt_send_recv(skt_clt, &n_clt_data, &n_srv_data);                // send and receive
                 
                 break;
 /*--------------------------------handle end------------------------------------------------------*/
 
 /*--------------------------------handle show-----------------------------------------------------*/ 
             case 4:
+                system("clear");
                 if(!logged_flag){
                     printf("[INFO] Please Login\n");
                     continue;
                 }
                 n_clt_data.opt = 4;
 
-                clt_send_recv(skt_clt, &n_clt_data, &n_srv_data);                   // send and receive
+                clt_send_recv(skt_clt, &n_clt_data, &n_srv_data);                 // send and receive
 
                 print_tbl_res(&n_srv_data);
                 
@@ -199,6 +203,7 @@ AGAIN_PASSWORD:
 
 /*--------------------------------handle publish--------------------------------------------------*/ 
             case 5:
+                system("clear");
                 if(!logged_flag){
                     printf("[INFO] Please Login\n");
                     continue;
@@ -238,6 +243,7 @@ AGAIN_CONTENT:
 
 /*--------------------------------handle show mine------------------------------------------------*/ 
             case 6:
+                system("clear");
                 if(!logged_flag){
                     printf("[INFO] Please Login\n");
                     continue;
@@ -258,9 +264,14 @@ AGAIN_CONTENT:
                 break;
 
             default:
+                system("clear");
                 printf("[ERROR] Invalid Option, Try Again\n");
                 continue;
                 break;
+        }
+        printf("[INFO] Press Enter To Continue...");
+        while(getchar() != '\n'){
+            continue;
         }
     }
     // close
