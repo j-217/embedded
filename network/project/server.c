@@ -4,7 +4,7 @@
  * @Author: ru_j
  * @Date: 2019-12-31 11:11:40
  * @LastEditors  : ru_j
- * @LastEditTime : 2020-01-01 21:20:36
+ * @LastEditTime : 2020-01-02 08:46:23
  */
 #include "my_srv.h"
 
@@ -35,7 +35,7 @@ int main(void)
     int range_flag = -1;                                        // display range flag
     
     
-    /*---------database------------------------------------------------*/
+/*---------------------database------------------------------------------------*/
 
     // init variables
     sqlite3 *p_db = NULL;
@@ -47,7 +47,7 @@ int main(void)
         return ERROR_S;
     }
 
-    /*---------database end--------------------------------------------*/
+/*---------------------database end--------------------------------------------*/
 
     // socket
     skt_serv = socket(AF_INET, SOCK_STREAM, 0);
