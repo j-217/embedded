@@ -4,7 +4,7 @@
  * @Author: ru_j
  * @Date: 2019-12-31 11:27:20
  * @LastEditors  : ru_j
- * @LastEditTime : 2020-01-01 19:59:50
+ * @LastEditTime : 2020-01-02 10:18:43
  */
 #include "my_clt.h"
 
@@ -25,6 +25,21 @@ int main(void)
     bzero(&n_srv_data, srv_data_len);
 
     int logged_flag = 0;                                        // login flag
+    struct termios n_term_setting, bakup_term_setting;          // new termios setting, backup termios setting
+
+/*------------------------set hidden and display input------------------------------------------------*/
+
+    res = tcgetattr(0, &bakup_term_setting);
+    if(res == -1){
+        perror("[ERROR] Getting Termios Attr");
+        return ERROR_S;
+    }
+    n_term_setting = bakup_term_setting;
+    n_term_setting.c_lflag &= ~ECHO;                            // hidden input 
+
+
+/*------------------------set end---------------------------------------------------------------------*/
+
 
     // socket
     skt_clt = socket(AF_INET, SOCK_STREAM, 0);
@@ -79,10 +94,24 @@ int main(void)
                 while(getchar() != '\n'){
                     continue;
                 }
+
+                res = tcsetattr(0, TCSANOW, &n_term_setting);                   // set hidden input
+                if(res == -1){
+                    perror("[ERROR] Setting Termios Attr Hidden");
+                    return ERROR_S;
+                }
+
                 printf("[INFO] Password: ");
                 scanf("%s", n_clt_data.password);
                 while(getchar() != '\n'){
                     continue;
+                }
+
+                printf("\n");
+                res = tcsetattr(0, TCSANOW, &bakup_term_setting);               // reset display input
+                if(res == -1){
+                    perror("[ERROR] Setting Termios Attr Display");
+                    return ERROR_S;
                 }
 
                 clt_send_recv(skt_clt, &n_clt_data, &n_srv_data);
@@ -110,7 +139,7 @@ int main(void)
                     continue;
                 }
                 bzero(&n_clt_data, clt_data_len);
-                n_clt_data.opt = 3;                                             // set client data
+                n_clt_data.opt = 3;                                                 // set client data
 
 AGAIN_USERNAME:
                 printf("[INFO] New Username: ");
@@ -124,6 +153,11 @@ AGAIN_USERNAME:
                     goto AGAIN_USERNAME;
                 }
 
+                res = tcsetattr(0, TCSANOW, &n_term_setting);                       // set hidden input
+                if(res == -1){
+                    perror("[ERROR] Setting Termios Attr Hidden");
+                    return ERROR_S;
+                }
 AGAIN_PASSWORD:
                 printf("[INFO] New Password: ");
                 scanf("%s", n_clt_data.password);
@@ -134,6 +168,13 @@ AGAIN_PASSWORD:
                 if(strlen(n_clt_data.password) < 1){
                     printf("[ERROR] Username must have at least one single charactor\n");
                     goto AGAIN_PASSWORD;
+                }
+
+                printf("\n");
+                res = tcsetattr(0, TCSANOW, &bakup_term_setting);                   // reset display input
+                if(res == -1){
+                    perror("[ERROR] Setting Termios Attr Display");
+                    return ERROR_S;
                 }
 
                 clt_send_recv(skt_clt, &n_clt_data, &n_srv_data);                   // send and receive

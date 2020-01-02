@@ -4,7 +4,7 @@
  * @Author: ru_j
  * @Date: 2019-12-31 11:12:12
  * @LastEditors  : ru_j
- * @LastEditTime : 2020-01-01 20:56:37
+ * @LastEditTime : 2020-01-02 09:59:12
  */
 #ifndef __COMM_H
 #define __COMM_H
@@ -22,6 +22,7 @@
 #include <strings.h>
 #include <stdlib.h>
 #include <sqlite3.h>
+#include <termio.h>                             // for hidden password when you input it
 
 #define SERVER_ADDR "127.0.0.1"
 #define SERVER_PORT 56789
