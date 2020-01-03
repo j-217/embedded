@@ -4,7 +4,7 @@
  * @Author: ru_j
  * @Date: 2019-12-31 11:11:40
  * @LastEditors  : ru_j
- * @LastEditTime : 2020-01-02 08:46:23
+ * @LastEditTime : 2020-01-02 14:29:32
  */
 #include "my_srv.h"
 
@@ -195,7 +195,7 @@ int main(void)
                     epoll_ctl(epfd, EPOLL_CTL_MOD, evs[i].data.fd, &ev);
 
                 }else if(evs[i].events & EPOLLOUT){                                            // event epollout
-                    printf("[INFO]Client [%d] Connected\n", evs[i].data.fd);
+                    printf("[INFO] Client [%d] Connected\n", evs[i].data.fd);
                     
 /*-----------------------------------handle response----------------------------------------------------------*/
                     

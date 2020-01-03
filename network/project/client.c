@@ -4,7 +4,7 @@
  * @Author: ru_j
  * @Date: 2019-12-31 11:27:20
  * @LastEditors  : ru_j
- * @LastEditTime : 2020-01-02 11:21:24
+ * @LastEditTime : 2020-01-02 14:15:58
  */
 #include "my_clt.h"
 
@@ -269,7 +269,7 @@ AGAIN_CONTENT:
                 continue;
                 break;
         }
-        printf("[INFO] Press Enter To Continue...");
+        printf("[INFO] Press Enter To Continue...");                                // take a pause
         while(getchar() != '\n'){
             continue;
         }
