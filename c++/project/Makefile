@@ -3,7 +3,7 @@ CFLAG:= -c -Wall
 OBJS:= comm.o coordinate.o shape.o pattern.o game.o main.o
 
 start: ${OBJS}
-	${CPP} $^ -o $@
+	${CPP} $^ -o $@ -lpthread
 
 comm.o: comm.cpp
 	${CPP} ${CFLAG} $< -o $@

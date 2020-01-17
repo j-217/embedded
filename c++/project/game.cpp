@@ -3,6 +3,7 @@
 #include <cstring>
 #include <random>
 #include <ctime>
+#include <unistd.h>
 
 using namespace std;
 
@@ -291,38 +292,60 @@ bool Game::movable() {
     return true;
 }
 
+void* get_key(void *key) {
+    char* key_;
+    
+    key_ = (char*)key;
+    
+    while (1) {
+        set_kbhit();
+        *key_ = getchar();
+        reset_kbhit();
+    }
+}
+
 void Game::run() {
+    pthread_t key_t = 0;
+    char key = 's';
     system("clear");
 
     hide_cursor();
-    
     this->draw_bg();
     this->draw_shape();
 
-/*----------keyboard set-------------*/
-
-    set_kbhit();
-    char c = 0;
-    while((c = getchar()) != 113) {
-
-        if (c == 'w') {
-            this->rotate();
-        }
-        if (c == 'a') {
-            this->move(MOV_DIR::TO_LT);
-        }
-        if (c == 'd') {
-            this->move(MOV_DIR::TO_RT);
-        }
-        if (c == 's') {
-            this->move(MOV_DIR::TO_BTM);
+    pthread_create(&key_t, NULL, get_key, (void *)(&key));
+    
+    while (1) {
+        fflush(stdout);
+        usleep(200000);
+        switch (key) {
+            case 'w':
+                this->rotate();
+                key = 's';
+                break;
+            case 'a':
+                this->move(MOV_DIR::TO_LT);
+                key = 's';
+                break;
+            case 'd':
+                this->move(MOV_DIR::TO_RT);
+                key = 's';
+                break;
+            case 's':
+                this->move(MOV_DIR::TO_BTM);
+                key = 's';
+                break;
+            case 'q':
+                reset_kbhit();
+                show_cursor();
+                delete this->_p_shape;
+                system("clear");
+                exit (1);
+            default:
+                this->move(MOV_DIR::TO_BTM);
+                break;
         }
     }
-    
-    show_cursor();
-    reset_kbhit();
-    system("clear");
-/*----------keyboard reset----------*/
 }
 
 bool Game::gameover() {
