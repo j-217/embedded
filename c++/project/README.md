@@ -2,7 +2,9 @@
 
 本项目是在linux平台下完成的俄罗斯方块游戏，为了练习在C++语言环境下的面向对象编程思路
 
-作者： 茹今
+作者： ru_j
+
+托管地址: [C++ Tetris](https://github.com/j-217/embedded.git)
 
 ## 编译&运行方式
 
