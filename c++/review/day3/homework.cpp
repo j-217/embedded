@@ -2,7 +2,7 @@
  * @Author: Ru_j
  * @Date: 2020-02-05 16:52:21
  * @LastEditors  : Ru_j
- * @LastEditTime : 2020-02-05 19:58:15
+ * @LastEditTime : 2020-02-05 20:15:06
  * @Description: 已知数组内容如下 s[]=[1,2,3,4,5,6,7,8,9],输入一个数n(1<=n<=9)，使得该数组内容顺序后移动n个位置。如n=3时，数组后移3个位置后的内容为{7,8,9,1,2,3,4,5,6}
  */
 #include <iostream>
@@ -71,7 +71,7 @@ void resort_arr(int (&arr)[ARR_SIZE::SIZE], int offset) {
         --count;
 
         // 经过count次需要重新设置一次偏移位置，否则会造成循环遍历，无法完成数组的整体遍历
-        // 如arr[6], offset = 3, 会重复遍历arr[3], arr[0]; offset = 4, 会重复遍历arr[4], arr[1]
+        // 如arr[6], offset = 3, 会重复遍历arr[3], arr[0]; offset = 4, 会重复遍历arr[4], arr[0], arr[2]
         if (count == 0) {
             arr[cur_i] = tmp;
             prev_i = (cur_i + 1 >= ARR_SIZE::SIZE) ? (cur_i + 1 - ARR_SIZE::SIZE) : cur_i + 1;
