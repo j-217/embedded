@@ -1,0 +1,21 @@
+{
+    "files.associations": {
+        "module.h": "c",
+        "kobject.h": "c",
+        "sysfs.h": "c",
+        "kernfs.h": "c",
+        "err.h": "c",
+        "list.h": "c",
+        "const.h": "c",
+        "stddef.h": "c",
+        "types.h": "c",
+        "ioctl.h": "c",
+        "uaccess.h": "c",
+        "fs.h": "c",
+        "slab.h": "c",
+        "unistd.h": "c"
+    },
+    "C_Cpp.autocomplete": "Default",
+    "C_Cpp.default.cppStandard": "c++11",
+    "C_Cpp.default.cStandard": "c89",
+}

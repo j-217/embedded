@@ -1,0 +1,1 @@
+cmd_/mnt/hgfs/Shared/mydriver/fsrtc_ruj/fsrtc.ko := arm-none-linux-gnueabi-ld -EL -r  -T /home/vem/linux-3.14/scripts/module-common.lds --build-id  -o /mnt/hgfs/Shared/mydriver/fsrtc_ruj/fsrtc.ko /mnt/hgfs/Shared/mydriver/fsrtc_ruj/fsrtc.o /mnt/hgfs/Shared/mydriver/fsrtc_ruj/fsrtc.mod.o

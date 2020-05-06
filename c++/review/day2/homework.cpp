@@ -1,8 +1,8 @@
 /*
  * @Author: Ru_j
  * @Date: 2020-02-04 16:00:15
- * @LastEditors  : Ru_j
- * @LastEditTime : 2020-02-04 18:01:50
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-05-05 17:41:45
  * @Description:
  * @    1. GET_SUM 输入n，求 1/1! - 1/2! + 1/3! - 1/4! ... 1/n!;
  * @    2. COUNT_LIGHT 一条长廊里依次装有n盏电灯，从头到尾编号1、2、3、…n-1、n。每盏电灯由一个拉线开关控制。开始，电灯全部关着。有n个学生从长廊穿过。第一个学生把号码凡

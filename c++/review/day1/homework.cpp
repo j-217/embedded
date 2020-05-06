@@ -1,8 +1,8 @@
 /*
  * @Author: Ru_j
  * @Date: 2020-02-03 16:04:42
- * @LastEditors  : Ru_j
- * @LastEditTime : 2020-02-03 22:18:43
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-05-05 17:44:14
  * @Description:
  * @    1. GET_MAX 找出数组中最大的数;
  * @    2. GET_GCD_LCM 求2个数的最大公约数、最小公倍数
